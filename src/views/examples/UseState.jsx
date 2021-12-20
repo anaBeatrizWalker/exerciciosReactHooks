@@ -4,14 +4,8 @@ import SectionTitle from '../../components/layout/SectionTitle'
 
 const UseState = (props) => {
 
-    /*Criando estado
-    const array = useState(0)//param: valor inicial
-    const num = array[0]//elemento que recebe o valor inicial
-    const setNum = array[1]//recebe função que altera o valor inicial
-    */
-
-    //OU usando recurso do Destructuring
     const [count, setCount] = useState(0)
+    const [name, setName] = useState("")//valor inicial: string vazia
 
     return (
         <div className="UseState">
@@ -20,7 +14,6 @@ const UseState = (props) => {
                 subtitle="Estado em componentes funcionais!"
             />
             <SectionTitle title="Exercício #01"/>
-
             <div className="center">
                 {/*Estado inicial do componente */}
                 <span className="text">{count}</span>
@@ -42,6 +35,8 @@ const UseState = (props) => {
             </div>
 
             <SectionTitle title="Exercício #02"/>
+            <input type="text" className="input" value={name} onChange={e => setName(e.target.value)}/>
+            <span className="text">{name}</span>{/*mostra o que está sendo digitado*/}
         </div>
     )
 }

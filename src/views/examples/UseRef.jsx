@@ -3,6 +3,10 @@ import { useEffect, useState } from 'react/cjs/react.development'
 import PageTitle from '../../components/layout/PageTitle'
 import SectionTitle from '../../components/layout/SectionTitle'
 
+const merge = function(s1, s2){
+    return [...s1].map((e, i) => `${e}${s2[i] || ""}`).join("")
+}
+
 const UseRef = (props) => {
 
     const [value1, setValue1] = useState("")
@@ -40,7 +44,7 @@ const UseRef = (props) => {
                     <span className="text">]</span>
                 </div>
 
-                <span className="text">{value1}</span>
+                <span className="text">{merge(value1,value2)}</span>
 
                 <input type="text" className="input" 
                     ref={myInput1}//cria a referência do input no current

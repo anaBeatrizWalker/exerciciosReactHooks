@@ -16,7 +16,20 @@ function reducer(state, action){
 
         case 'login':
             return {...state, user: {name: action.name}}
+
+        //DESAFIOS
+        case 'numberMulti7':
+            return {...state, number: state.number * 7}
             
+        case 'numberDiv25':
+            return {...state, number: state.number / 25}
+        
+        case 'numberParseInt':
+            return {...state, number: parseInt(state.number)}
+
+        case 'numberAddN':
+            return {...state, number: state.number + action.payload}
+
         default:
             //retorna o estado atual
             return state
@@ -46,6 +59,17 @@ const UseReducer = (props) => {
                     <button className="btn" onClick={()=> dispath({type: 'login', name: 'Ana Beatriz'})}>Logar</button>
 
                     <button className="btn" onClick={()=> dispath({type: 'numberAdd2'})}>+2</button>
+                </div>
+                
+                {/*DESAFIOS*/}
+                <div>
+                    <button className="btn" onClick={()=> dispath({type: 'numberMulti7'})}>x7</button>
+
+                    <button className="btn" onClick={()=> dispath({type: 'numberDiv25'})}>/25</button>
+
+                    <button className="btn" onClick={()=> dispath({type: 'numberParseInt'})}>int</button>
+
+                    <button className="btn" onClick={()=> dispath({type: 'numberAddN', payload: -14})}>-14</button>
                 </div>
             </div>
         </div>

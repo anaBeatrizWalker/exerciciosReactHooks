@@ -6,11 +6,22 @@ import SectionTitle from '../../components/layout/SectionTitle'
 const UseRef = (props) => {
 
     const [value1, setValue1] = useState("")
+    const [value2, setValue2] = useState("")
+
     const count = useRef(0)
+    const myInput1 = useRef(null)
+    const myInput2 = useRef(null)
+    console.log(myInput1.current)
 
     useEffect(function(){
-        count.current = count.current + 1//controla todas as renderizações do componente
-    }, [value1])//modifica o valor de current quando o value for moficado
+        count.current = count.current + 1
+        myInput2.current.focus()
+    }, [value1])
+
+    useEffect(function(){
+        count.current ++
+        myInput1.current.focus()
+    }, [value2])
     
     return (
         <div className="UseRef">
@@ -31,8 +42,17 @@ const UseRef = (props) => {
 
                 <span className="text">{value1}</span>
 
-                <input type="text" className="input" value={value1} onChange={e => setValue1(e.target.value)}/>
-                
+                <input type="text" className="input" 
+                    ref={myInput1}//cria a referência do input no current
+                    value={value1} onChange={e => setValue1(e.target.value)}/>
+            </div>
+
+            {/*Ex02: usando useRef para alterar o html*/}
+            <SectionTitle title="Exercício #02"/>
+            <div className="center">
+                <input type="text" className="input"
+                    ref={myInput2} 
+                    value={value2} onChange={e => setValue2(e.target.value)}/>
             </div>
         </div>
     )

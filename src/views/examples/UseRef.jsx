@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react/cjs/react.development'
 import PageTitle from '../../components/layout/PageTitle'
 import SectionTitle from '../../components/layout/SectionTitle'
 
+//Concatenar cada dígito em cada input
 const merge = function(s1, s2){
     return [...s1].map((e, i) => `${e}${s2[i] || ""}`).join("")
 }

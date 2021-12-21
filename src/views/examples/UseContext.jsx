@@ -6,6 +6,13 @@ const UseContext = (props) => {
 
     const context = useContext(DataContext)
 
+    function  setNumber(delta) {
+        context.setState({
+            ...context.state, //recupera todos os atributos
+            number: context.state.number + delta //sobscreve o atributo a ser mudado
+        })
+    }
+
     return (
         <div className="UseContext">
             <PageTitle
@@ -14,9 +21,15 @@ const UseContext = (props) => {
             />
             <div className="center">
                 {/*Acessando somente o conteúdo de texto do Contexto*/}
-                <span className="text">{context.text}</span>
+                <span className="text">{context.state.text}</span>
+                
                 {/*Acessando somente o number do Contexto*/}
-                <span className="text">{context.number}</span>
+                <span className="text">{context.state.number}</span>
+
+                <div>
+                    <button className="btn" onClick={() => setNumber(+1)}>+1</button>
+                    <button className="btn" onClick={() => setNumber(-1)}>-1</button>
+                </div>
             </div>
         </div>
     )
